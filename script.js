@@ -6,80 +6,35 @@ const gardenArea = Pi*radius*radius;
 const plantMinSpace = .8;
 let numPlant = 20;
 
-let week =1;
+let week =3;    //MODIFY THIS VALUE
 
-let plant = 2**(week-1)
+let multiplier = 2**(week-1)
+let totalPlants = multiplier*numPlant*plantMinSpace
 
-
-
-// let plantsPerWeek = beginingPlans * 2 ** week
-
-
-let WeeksNumber1=1;
-let WeeksNumber2=WeeksNumber1*2;
-let WeeksNumber3=WeeksNumber2*2;
-
-
-let plantArea = numPlant*plantMinSpace;
-
-let plantAreaTest1 = WeeksNumber1*plantArea;
-let plantAreaTest2= WeeksNumber2*plantArea;
-let plantAreaTest3 = WeeksNumber3*plantArea; 
 
 let action;
 
-//Week one Test
-if (plantAreaTest1>(.8*gardenArea)){
 
-    action = 'Pruned'
+if (totalPlants>(.8*gardenArea)){
 
-} else if (plantAreaTest1>(.5*gardenArea)){
+    action = 'Pruned';
 
-    action = 'Monitored'
+} else if (totalPlants>(.5*gardenArea)){
 
-} else if (plantAreaTest1<(.5*gardenArea)){
-    action = 'Planted'
+    action = 'Monitored';
+
+} else if (totalPlants<(.5*gardenArea)){
+    action = 'Planted';
 }
 
-output1 = `for week ${WeeksNumber1} the plants should be ${action}\n`;
-
-//Week Two Test
-if (plantAreaTest2>(.8*gardenArea)){
-
-    action = 'Pruned'
-
-} else if (plantAreaTest2>(.5*gardenArea)){
-
-    action = 'Monitored'
-
-} else if (plantAreaTest2<(.5*gardenArea)){
-    action = 'Planted'
-}
-
-output2 = `for week ${WeeksNumber2} the plants should be ${action}\n`;
-
-//Week 3 test
-if (plantAreaTest3>(.8*gardenArea)){
-
-    action = 'Pruned'
-
-} else if (plantAreaTest3>(.5*gardenArea)){
-
-    action = 'Monitored'
-
-} else if (plantAreaTest3<(.5*gardenArea)){
-    action = 'Planted'
-}
+output1 = `for week ${week} the plants should be ${action}\n`;
 
 
-output3 = `for WeeksNumber3 the plants should be ${action}`;
-
-
-
-
-console.log(output1,output2,output3);
-
-
+// console.log(output1);
+// OUTPUT --------------------------------
+// for week 1 the plants should be Planted
+// for week 2 the plants should be Planted
+// for week 3 the plants should be Pruned
 
 
 
@@ -87,12 +42,17 @@ console.log(output1,output2,output3);
 
 
 //Part 2 Thinking Bigger
+let numStarting = 100;
+let noPruneWeeks = 10
+let numEnding = (2**(noPruneWeeks-1))*numStarting;
+let spaceNeeded = numEnding*plantMinSpace;
+let spacediffernce = spaceNeeded-gardenArea;
 
+console.log(`Amount of additional space required: ${spacediffernce}`);
 
+let expandedRadius = (spaceNeeded/Pi)**.5
 
-
-
-
+console.log(`Radius of Expanded Garden: ${expandedRadius}`);
 
 
 
